@@ -30,26 +30,43 @@ public class Mage implements Comparable<Mage> {
     public int compareTo(Mage other) {
         // Natural ordering based on name, then level, then power
         int nameCompare = this.name.compareTo(other.name);
-        if (nameCompare != 0) return nameCompare;
+        if (nameCompare != 0) {
+            return nameCompare;
+        }
 
         int levelCompare = Integer.compare(this.level, other.level);
-        if (levelCompare != 0) return levelCompare;
+
+        if (levelCompare != 0) {
+            return levelCompare;
+        }
 
         return Double.compare(this.power, other.power);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Mage mage = (Mage) o;
 
-        if (level != mage.level) return false;
-        if (Double.compare(mage.power, power) != 0) return false;
+        if (level != mage.level) {
+            return false;
+        }
+
+        if (Double.compare(mage.power, power) != 0) {
+            return false;
+        }
+
         return name.equals(mage.name);
     }
 
+    //    Hashing function
     @Override
     public int hashCode() {
         int result;
@@ -58,6 +75,7 @@ public class Mage implements Comparable<Mage> {
         result = 31 * result + level;
         temp = Double.doubleToLongBits(power);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
+
         return result;
     }
 
@@ -69,6 +87,16 @@ public class Mage implements Comparable<Mage> {
                 ", power=" + power +
                 ", apprentices=" + apprentices.size() +
                 '}';
+    }
+
+    public int countDescendants() {
+        int count = 0;
+
+        for (Mage apprentice : apprentices) {
+            count += 1 + apprentice.countDescendants();
+        }
+
+        return count;
     }
 
     public String getName() {
@@ -85,13 +113,5 @@ public class Mage implements Comparable<Mage> {
 
     public Set<Mage> getApprentices() {
         return Collections.unmodifiableSet(apprentices); // Protect internal set
-    }
-
-    public int countDescendants() {
-        int count = 0;
-        for (Mage apprentice : apprentices) {
-            count += 1 + apprentice.countDescendants();
-        }
-        return count;
     }
 }
