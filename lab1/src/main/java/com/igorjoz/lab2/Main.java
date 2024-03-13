@@ -20,7 +20,7 @@ public class Main {
         }
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter numbers to check if they are prime. Type 'exit' to stop.");
+        System.out.println("Enter numbers to check if they are prime. Type 'exit' to stop the program.");
 
         while (true) {
             String input = scanner.nextLine();

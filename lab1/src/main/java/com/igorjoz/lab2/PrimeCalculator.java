@@ -25,17 +25,18 @@ public class PrimeCalculator implements Runnable {
 
     private boolean isPrime(int number) {
         if (number <= 1) {
-            System.out.println("Calculated number is not prime");
+            System.out.println(number + " - number is not prime");
             return false;
         }
         //for (int i = 2; i * i <= number; i++) {
+        // Slower method used on purpose, to make calculations last longer
         for (int i = 2; i < number; i++) {
             if (number % i == 0) {
-                System.out.println("Calculated number is not prime");
+                System.out.println(number + " - number is not prime");
                 return false;
             }
         }
-        System.out.println("Calculated number is prime");
+        System.out.println(number + " - number is prime");
         return true;
     }
 }

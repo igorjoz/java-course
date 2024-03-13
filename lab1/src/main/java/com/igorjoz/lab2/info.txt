@@ -1,0 +1,54 @@
+1. Zasób do zgłaszania kolejnych zadań. Należy przygotować współdzielony zasób,
+który będzie pozwalał na zgłaszanie i pobieranie kolejnych zadań (np.: liczb
+pierwszych do sprawdzenia). Dodanie nowego zadania nie powinno usuwać
+poprzedniego jeśli nie zostało jeszcze pobrane. Zasób powinien wykorzystywać
+mechanizm wait-notify do synchronizacji wątków. (1 pkt)
+
+klasa TaskQueue
+- addTask() - synchronized
+- getNextTask() - synchronized
+
+
+2. Zasób do zbierania wyników. Należy przygotować współdzielony zasób, do którego
+będą wprowadzane kolejne wyniki obliczeń. Dodanie kolejnego wyniku nie powinno
+usuwać poprzednich. Zasób powinien wykorzystywać mechanizmy sekcji
+krytycznej. (1 pkt)
+
+klasa ResultList
+- pole List<Boolean> result
+- addResult() - synchronized
+- getResults() - synchronized
+
+
+3. Wątki realizujące obliczenia. Należy przygotować implementację procesu
+wykonywania zdefiniowanego obliczania, która będzie mogła być przekazana do
+instancji wątku. Kolejne zadania do wykonania powinny być pobierane
+z odpowiedniego współdzielonego zasobu w sposób ciągły (wątek po wykonaniu
+obliczenia wykonuje kolejne). Wyniki obliczeń powinny być zapisywane
+w odpowiednim współdzielonym zasobie. (1 pkt)
+
+klasa PrimeCheckerApp
+- TaskQueue taskQueue
+- ResultList resultList
+- int threadsCount
+- List<Thread> threads
+
+
+4. Uruchomienie aplikacji. Po uruchomieniu aplikacji należy uruchomić odpowiednią
+liczbę wątków realizujących złożone obliczenia. Liczba wątków zależy od parametru
+startowego aplikacji. Użytkownik powinien mieć możliwość zgłaszania kolejnych
+zadań (np.: poprzez wpisanie polecenia na konsoli odczytanego przez System.in
+za pomocą klasy Scanner). (1 pkt)
+
+klasa Main
+
+
+5. Poprawne zamknięcie aplikacji. Użytkownik powinien mieć możliwość zamknięcia
+aplikacji (np.: poprzez wpisanie polecenia na konsoli odczytanego przez
+System.in za pomocą klasy Scanner). W przypadku zakończenia działania
+aplikacji należy poprawnie zakończyć działanie wszystkich wątków. (1 pkt)
+
+
+Na 2 wątkach: 1:09
+Na 6 wątkach: 0:29
+Na 12 wątkach: 0:18

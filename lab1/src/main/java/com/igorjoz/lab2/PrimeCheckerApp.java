@@ -33,12 +33,12 @@ public class PrimeCheckerApp {
         }
 
         threads.forEach(Thread::interrupt);
-        
+
         for (Thread thread : threads) {
             try {
                 thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            } catch (InterruptedException exception) {
+                exception.printStackTrace();
             }
         }
 
