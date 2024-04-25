@@ -1,0 +1,9 @@
+Processing time with 1 threads: 111174 ms
+Processing time with 2 threads: 61298 ms
+Processing time with 4 threads: 31788 ms
+Processing time with 6 threads: 23912 ms
+Processing time with 8 threads: 22446 ms
+Processing time with 10 threads: 22294 ms
+Processing time with 12 threads: 25291 ms
+Processing time with 30 threads: 22743 ms
+Processing time with 6 threads: 26051 ms
